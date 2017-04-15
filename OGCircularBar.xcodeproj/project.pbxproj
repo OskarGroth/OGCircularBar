@@ -11,6 +11,8 @@
 		7521094E1E9E6AD100BE98F1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7521094D1E9E6AD100BE98F1 /* ViewController.swift */; };
 		752109501E9E6AD100BE98F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7521094F1E9E6AD100BE98F1 /* Assets.xcassets */; };
 		752109531E9E6AD100BE98F1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 752109511E9E6AD100BE98F1 /* Main.storyboard */; };
+		757131761EA261F40063228D /* OGCircularBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757131751EA261F40063228D /* OGCircularBarView.swift */; };
+		757131781EA264410063228D /* NSBezierPath+CGPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757131771EA264410063228D /* NSBezierPath+CGPath.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +22,8 @@
 		7521094F1E9E6AD100BE98F1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		752109521E9E6AD100BE98F1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		752109541E9E6AD100BE98F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		757131751EA261F40063228D /* OGCircularBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OGCircularBarView.swift; sourceTree = "<group>"; };
+		757131771EA264410063228D /* NSBezierPath+CGPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSBezierPath+CGPath.swift"; path = "../NSBezierPath+CGPath.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,8 +56,10 @@
 		7521094A1E9E6AD100BE98F1 /* OGCircularBar */ = {
 			isa = PBXGroup;
 			children = (
+				757131771EA264410063228D /* NSBezierPath+CGPath.swift */,
 				7521094B1E9E6AD100BE98F1 /* AppDelegate.swift */,
 				7521094D1E9E6AD100BE98F1 /* ViewController.swift */,
+				757131751EA261F40063228D /* OGCircularBarView.swift */,
 				7521094F1E9E6AD100BE98F1 /* Assets.xcassets */,
 				752109511E9E6AD100BE98F1 /* Main.storyboard */,
 				752109541E9E6AD100BE98F1 /* Info.plist */,
@@ -134,7 +140,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				7521094E1E9E6AD100BE98F1 /* ViewController.swift in Sources */,
+				757131781EA264410063228D /* NSBezierPath+CGPath.swift in Sources */,
 				7521094C1E9E6AD100BE98F1 /* AppDelegate.swift in Sources */,
+				757131761EA261F40063228D /* OGCircularBarView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,6 +299,7 @@
 				752109591E9E6AD100BE98F1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

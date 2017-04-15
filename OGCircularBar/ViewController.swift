@@ -10,12 +10,15 @@ import Cocoa
 
 class ViewController: NSViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    @IBOutlet var barView: OGCircularBarView!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        barView.addCircleBar(radius: 100, width: 10, color: NSColor.purple.withAlphaComponent(0.2))
+        
+        barView.addBar(progress: 0.99, radius: 100, width: 10, color: NSColor.purple, animate: true)
     }
-
+    
     override var representedObject: Any? {
         didSet {
         // Update the view, if already loaded.
