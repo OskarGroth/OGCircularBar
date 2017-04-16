@@ -6,7 +6,7 @@ Circular progress bar for macOS.
 This is a NSView subclass that lets you create beautiful circular progress bars.
 Multiple bars can be added in one view, and styling options such as size, color and glow are available.
 
-![OGCircularBar for macOS](https://s3.amazonaws.com/cindori/images/ogcircularbar.png "OGCircularBar for macOS")
+![OGCircularBar for macOS](https://s3.amazonaws.com/cindori/images/circularbar.png "OGCircularBar for macOS")
 
 
 ## License
