@@ -57,9 +57,9 @@
 			isa = PBXGroup;
 			children = (
 				757131771EA264410063228D /* NSBezierPath+CGPath.swift */,
+				757131751EA261F40063228D /* OGCircularBarView.swift */,
 				7521094B1E9E6AD100BE98F1 /* AppDelegate.swift */,
 				7521094D1E9E6AD100BE98F1 /* ViewController.swift */,
-				757131751EA261F40063228D /* OGCircularBarView.swift */,
 				7521094F1E9E6AD100BE98F1 /* Assets.xcassets */,
 				752109511E9E6AD100BE98F1 /* Main.storyboard */,
 				752109541E9E6AD100BE98F1 /* Info.plist */,
