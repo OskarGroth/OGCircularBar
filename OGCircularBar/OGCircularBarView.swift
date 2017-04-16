@@ -30,14 +30,26 @@ public final class OGCircularBarView: NSView, Sequence {
     
     func setup() {
         wantsLayer = true
+        layerUsesCoreImageFilters = true
     }
     
     public func addBar(progress: CGFloat, radius: CGFloat, width: CGFloat, color: NSColor, animate: Bool, glow: Bool) {
-        let endangle = 2*CGFloat.pi*progress
-        let bar = CircularBarLayer(center: center, radius: radius, width: width, startAngle: 0, endAngle: endangle, color: color, glow: glow)
-        bars.append(bar)
-        layer!.addSublayer(bar)
-        bar.setProgress(progress, duration: 10)
+        let endAngle = 2*CGFloat.pi*progress
+        let glowBarLayer = glow ? CircularBarLayer(center: center, radius: radius, width: width, startAngle: 0, endAngle: endAngle, color: color.withAlphaComponent(0.5), glowLayer: nil) : nil
+        let barLayer = CircularBarLayer(center: center, radius: radius, width: width, startAngle: 0, endAngle: endAngle, color: color, glowLayer: glowBarLayer)
+        bars.append(barLayer)
+        if let glowLayer = glowBarLayer {
+            let groupLayer = CALayer()
+            groupLayer.frame = barLayer.frame
+            let filter = CIFilter(name: "CIGaussianBlur", withInputParameters: [kCIInputRadiusKey: 10])!
+            glowLayer.filters = [filter]
+            groupLayer.addSublayer(glowLayer)
+            groupLayer.addSublayer(barLayer)
+            layer!.addSublayer(groupLayer)
+        } else {
+            layer?.addSublayer(barLayer)
+        }
+        barLayer.setProgress(progress, duration: 5)
     }
     
     public func addCircleBar(radius: CGFloat, width: CGFloat, color: NSColor) {
@@ -68,22 +80,14 @@ open class CircularBarLayer: CAShapeLayer, CALayerDelegate, CAAnimationDelegate 
         }
     }
     
-    public init(center: CGPoint, radius: CGFloat, width: CGFloat, startAngle: CGFloat, endAngle: CGFloat, color: NSColor, glow: Bool) {
+    public init(center: CGPoint, radius: CGFloat, width: CGFloat, startAngle: CGFloat, endAngle: CGFloat, color: NSColor, glowLayer: CircularBarLayer?) {
         super.init()
+        glowBarLayer = glowLayer
         let bezier = NSBezierPath()
         bezier.appendArc(withCenter: center, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: true)
         bezier.transform(using: AffineTransform(rotationByDegrees: 90))
         bezier.transform(using: AffineTransform(translationByX: center.x*2, byY: 0))
         bezier.close()
-        
-        if glow {
-            glowBarLayer = CircularBarLayer(center: center, radius: radius, width: width, startAngle: startAngle, endAngle: endAngle, color: color.withAlphaComponent(0.5), glow: false)
-            addSublayer(glowBarLayer!)
-            let filter = CIFilter(name: "CIGaussianBlur", withInputParameters: nil)!
-            filter.setDefaults()
-            glowBarLayer?.filters = [filter]
-        }
-
         delegate = self as CALayerDelegate
         path = bezier.cgPath
         fillColor = NSColor.clear.cgColor
@@ -95,7 +99,7 @@ open class CircularBarLayer: CAShapeLayer, CALayerDelegate, CAAnimationDelegate 
     }
     
     public convenience init(center: CGPoint, radius: CGFloat, width: CGFloat, color: NSColor) {
-        self.init(center: center, radius: radius, width: width, startAngle: 0, endAngle: 2*CGFloat.pi, color: color, glow: false)
+        self.init(center: center, radius: radius, width: width, startAngle: 0, endAngle: 2*CGFloat.pi, color: color, glowLayer: nil)
     }
     
     public required init?(coder aDecoder: NSCoder) {
@@ -107,8 +111,8 @@ open class CircularBarLayer: CAShapeLayer, CALayerDelegate, CAAnimationDelegate 
     }
     
     open func setProgress(_ progress: CGFloat, duration: CGFloat, completion: ((Void) -> Void)? = nil) {
-        if let glowBar = glowBarLayer {
-            glowBarLayer?.setProgress(progress, duration: duration)
+        if let glowLayer = glowBarLayer {
+            glowLayer.setProgress(progress, duration: duration)
         }
         let animation = CABasicAnimation(keyPath: "strokeEnd")
         animation.fromValue = strokeEnd
