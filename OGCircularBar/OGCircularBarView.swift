@@ -8,7 +8,7 @@
 
 import Cocoa
 
-public final class OGCircularBarView: NSView, Sequence {
+public class OGCircularBarView: NSView, Sequence {
     
     public var bars: [CircularBarLayer] = []
     public var circleBars: [CircularBarLayer] = []
@@ -40,14 +40,14 @@ public final class OGCircularBarView: NSView, Sequence {
     
     public func addBar(progress: CGFloat, radius: CGFloat, width: CGFloat, color: NSColor, animate: Bool, glow: Bool) {
         let endAngle = 2*CGFloat.pi*progress
-        let glowBarLayer = glow ? CircularBarLayer(center: center, radius: radius, width: width, startAngle: 0, endAngle: endAngle, color: color.withAlphaComponent(0.5), glowLayer: nil) : nil
+        let glowBarLayer = glow ? CircularBarLayer(center: center, radius: radius, width: width, startAngle: 0, endAngle: endAngle, color: color.withAlphaComponent(0.6), glowLayer: nil) : nil
         let barLayer = CircularBarLayer(center: center, radius: radius, width: width, startAngle: 0, endAngle: endAngle, color: color, glowLayer: glowBarLayer)
         bars.append(barLayer)
         if let glowLayer = glowBarLayer {
             let groupLayer = CALayer()
             groupLayer.frame = barLayer.frame
             let filter = CIFilter(name: "CIGaussianBlur")!
-            filter.setValue(10, forKey: kCIInputRadiusKey)
+            filter.setValue(6, forKey: kCIInputRadiusKey)
             glowLayer.filters = [filter]
             groupLayer.addSublayer(glowLayer)
             groupLayer.addSublayer(barLayer)
@@ -55,7 +55,7 @@ public final class OGCircularBarView: NSView, Sequence {
         } else {
             layer?.addSublayer(barLayer)
         }
-        barLayer.setProgress(progress, duration: 5)
+        barLayer.setProgress(progress, duration: 1.5)
     }
     
     public func addCircleBar(radius: CGFloat, width: CGFloat, color: NSColor) {
