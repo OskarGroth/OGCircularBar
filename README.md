@@ -17,9 +17,11 @@ Configure your Podfile to use `OGCircularBar`:
 ## Usage
 
 Create an `OGCircularBarView` and add bars as such:
+
 `barView.addBar(progress: 0.80, radius: 100, width: 10, color: NSColor.blue, animate: true, glow: true)`
 
 You can add static circle backgrounds with the following method:
+
 `barView.addCircleBar(radius: 80, width: 10, color: NSColor.purple.withAlphaComponent(0.2)`
 
 ## License
