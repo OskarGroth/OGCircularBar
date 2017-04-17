@@ -22,7 +22,7 @@ Create an `OGCircularBarView` and add bars as such:
 
 You can add static circle backgrounds with the following method:
 
-`barView.addCircleBar(radius: 80, width: 10, color: NSColor.purple.withAlphaComponent(0.2)`
+`barView.addCircleBar(radius: 80, width: 10, color: NSColor.purple.withAlphaComponent(0.2))`
 
 ## License
 The MIT License (MIT)
