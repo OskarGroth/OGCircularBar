@@ -10,18 +10,17 @@ Multiple bars can be added in one view, and styling options such as size, color 
 ![OGCircularBar for macOS](https://s3.amazonaws.com/cindori/images/circularbar.png "OGCircularBar for macOS")
 
 ## Installation (CocoaPods)
-Configure your Podfile to use `OGFlatButton`:
+Configure your Podfile to use `OGCircularBar`:
 
-```pod 'OGFlatButton'```
+```pod 'OGCircularBar'```
 
 ## Usage
 
-Create an `NSButton` in Interface Builder and set it's class to `FlatButton`.
-You can now style your button from the inspector:
+Create an `OGCircularBarView` and add bars as such:
+`barView.addBar(progress: 0.80, radius: 100, width: 10, color: NSColor.blue, animate: true, glow: true)`
 
-![FlatButton for macOS](https://s3.amazonaws.com/cindori/images/inspector.png "FlatButton for macOS")
-
-The same values can be accessed from your code.
+You can add static circle backgrounds with the following method:
+`barView.addCircleBar(radius: 80, width: 10, color: NSColor.purple.withAlphaComponent(0.2)`
 
 ## License
 The MIT License (MIT)
