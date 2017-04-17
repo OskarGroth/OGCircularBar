@@ -1,16 +1,30 @@
 OGCircularBar
 ==================
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
 Circular progress bar for macOS.
 
 This is a NSView subclass that lets you create beautiful circular progress bars.
-Multiple bars can be added in one view, and styling options such as size, color and glow are available.
+Multiple bars can be added in one view, and styling options such as size, color and glow are available. Animatable.
 
 ![OGCircularBar for macOS](https://s3.amazonaws.com/cindori/images/circularbar.png "OGCircularBar for macOS")
 
+## Installation (CocoaPods)
+Configure your Podfile to use `OGFlatButton`:
+
+```pod 'OGFlatButton'```
+
+## Usage
+
+Create an `NSButton` in Interface Builder and set it's class to `FlatButton`.
+You can now style your button from the inspector:
+
+![FlatButton for macOS](https://s3.amazonaws.com/cindori/images/inspector.png "FlatButton for macOS")
+
+The same values can be accessed from your code.
 
 ## License
-The GNU GPLv3 License (GNU GPLv3)
+The MIT License (MIT)
 
 Copyright (c) 2017 Oskar Groth
 
