@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "752109471E9E6AD100BE98F1"
-               BuildableName = "OGCircularBar.app"
-               BlueprintName = "OGCircularBar"
+               BlueprintIdentifier = "753A29331EA4B2BA00B8CC61"
+               BuildableName = "OGCircularBar-Demo.app"
+               BlueprintName = "OGCircularBar-Demo"
                ReferencedContainer = "container:OGCircularBar.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -32,9 +32,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "752109471E9E6AD100BE98F1"
-            BuildableName = "OGCircularBar.app"
-            BlueprintName = "OGCircularBar"
+            BlueprintIdentifier = "753A29331EA4B2BA00B8CC61"
+            BuildableName = "OGCircularBar-Demo.app"
+            BlueprintName = "OGCircularBar-Demo"
             ReferencedContainer = "container:OGCircularBar.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -55,9 +55,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "752109471E9E6AD100BE98F1"
-            BuildableName = "OGCircularBar.app"
-            BlueprintName = "OGCircularBar"
+            BlueprintIdentifier = "753A29331EA4B2BA00B8CC61"
+            BuildableName = "OGCircularBar-Demo.app"
+            BlueprintName = "OGCircularBar-Demo"
             ReferencedContainer = "container:OGCircularBar.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -74,9 +74,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "752109471E9E6AD100BE98F1"
-            BuildableName = "OGCircularBar.app"
-            BlueprintName = "OGCircularBar"
+            BlueprintIdentifier = "753A29331EA4B2BA00B8CC61"
+            BuildableName = "OGCircularBar-Demo.app"
+            BlueprintName = "OGCircularBar-Demo"
             ReferencedContainer = "container:OGCircularBar.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

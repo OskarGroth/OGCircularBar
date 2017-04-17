@@ -11,7 +11,7 @@ import AppKit
 
 extension NSBezierPath {
     
-    public var cgPath: CGPath {
+    internal var cgPath: CGPath {
         let path = CGMutablePath()
         var points = [CGPoint](repeating: .zero, count: 3)
         for i in 0 ..< self.elementCount {

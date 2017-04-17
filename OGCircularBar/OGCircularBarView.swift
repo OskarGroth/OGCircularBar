@@ -41,7 +41,8 @@ public final class OGCircularBarView: NSView, Sequence {
         if let glowLayer = glowBarLayer {
             let groupLayer = CALayer()
             groupLayer.frame = barLayer.frame
-            let filter = CIFilter(name: "CIGaussianBlur", withInputParameters: [kCIInputRadiusKey: 10])!
+            let filter = CIFilter(name: "CIGaussianBlur")!
+            filter.setValue(10, forKey: kCIInputRadiusKey)
             glowLayer.filters = [filter]
             groupLayer.addSublayer(glowLayer)
             groupLayer.addSublayer(barLayer)
