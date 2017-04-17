@@ -17,6 +17,11 @@ public final class OGCircularBarView: NSView, Sequence {
             return NSMakePoint(floor(bounds.width/2), floor(bounds.height/2))
         }
     }
+    
+    public override func awakeFromNib() {
+        super.awakeFromNib()
+        setup()
+    }
 
     override public init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
