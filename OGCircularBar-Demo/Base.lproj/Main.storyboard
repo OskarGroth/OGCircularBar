@@ -696,6 +696,14 @@
                                         <rect key="frame" x="100" y="100" width="300" height="300"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     </customView>
+                                    <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FUD-2m-Ri5">
+                                        <rect key="frame" x="142" y="449" width="216" height="19"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <sliderCell key="cell" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="ceV-A0-qKH"/>
+                                        <connections>
+                                            <action selector="sliderPress:" target="XfG-lQ-9wD" id="50K-X3-7ID"/>
+                                        </connections>
+                                    </slider>
                                 </subviews>
                             </visualEffectView>
                         </subviews>

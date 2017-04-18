@@ -21,9 +21,13 @@ class ViewController: NSViewController {
         barView.addCircleBar(radius: 100, width: 10, color: pink.withAlphaComponent(0.1))
         barView.addCircleBar(radius: 120, width: 15, color: blue.withAlphaComponent(0.1))
         barView.addCircleBar(radius: 80, width: 10, color: green.withAlphaComponent(0.1))
-        barView.addBar(progress: 0.80, radius: 100, width: 10, color: pink, animate: true, duration: 1.5, glowOpacity: 0.4, glowRadius: 8)
-        barView.addBar(progress: 0.45, radius: 120, width: 15, color: blue, animate: true, duration: 1.5, glowOpacity: 0.4, glowRadius: 8)
-        barView.addBar(progress: 0.65, radius: 80, width: 10, color: green, animate: true, duration: 1.5, glowOpacity: 0.4, glowRadius: 8)
+        barView.addBar(progress: 0 , radius: 100, width: 10, color: pink, animationDuration: 0, glowOpacity: 0.4, glowRadius: 8)
+        barView.addBar(progress: 0.45, radius: 120, width: 15, color: blue, animationDuration: 1.5, glowOpacity: 0.4, glowRadius: 8)
+        barView.addBar(progress: 0.65, radius: 80, width: 10, color: green, animationDuration: 1.5, glowOpacity: 0.4, glowRadius: 8)
+    }
+    
+    @IBAction func sliderPress(_ sender: Any) {
+        barView.bars[0].setProgress(CGFloat((sender as! NSSlider).floatValue/100), duration: 1.5)
     }
     
     override var representedObject: Any? {

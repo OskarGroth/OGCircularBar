@@ -6,49 +6,49 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OGCircularBar/OGCircularBarView.swift"
-            timestampString = "514235022.086011"
+            timestampString = "514238972.620797"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "111"
-            endingLineNumber = "111"
+            startingLineNumber = "110"
+            endingLineNumber = "110"
             landmarkName = "setProgress(_:duration:completion:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "OGCircularBar_Demo.CircularBarLayer.setProgress (CoreGraphics.CGFloat, duration : CoreGraphics.CGFloat, completion : Swift.Optional&lt;() -&gt; ()&gt;) -&gt; ()"
-                  moduleName = "OGCircularBar-Demo"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/oskar/OGCircularBar/OGCircularBar/OGCircularBarView.swift"
-                  timestampString = "514193312.919155"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "121"
-                  endingLineNumber = "121"
-                  offsetFromSymbolStart = "40">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "OGCircularBar_Demo.CircularBarLayer.setProgress (CoreGraphics.CGFloat, duration : CoreGraphics.CGFloat, completion : Swift.Optional&lt;() -&gt; ()&gt;) -&gt; ()"
-                  moduleName = "OGCircularBar-Demo"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/oskar/OGCircularBar/OGCircularBar/OGCircularBarView.swift"
-                  timestampString = "514193312.920781"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "121"
-                  endingLineNumber = "121"
-                  offsetFromSymbolStart = "118">
-               </Location>
-            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "OGCircularBar/OGCircularBarView.swift"
+            timestampString = "514238972.620797"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
+            landmarkName = "addBar(progress:radius:width:color:animationDuration:glowOpacity:glowRadius:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "OGCircularBar/OGCircularBarView.swift"
+            timestampString = "514238972.620797"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
+            landmarkName = "setProgress(_:duration:completion:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
