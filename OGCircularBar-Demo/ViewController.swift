@@ -21,9 +21,9 @@ class ViewController: NSViewController {
         barView.addCircleBar(radius: 100, width: 10, color: pink.withAlphaComponent(0.1))
         barView.addCircleBar(radius: 120, width: 15, color: blue.withAlphaComponent(0.1))
         barView.addCircleBar(radius: 80, width: 10, color: green.withAlphaComponent(0.1))
-        barView.addBar(progress: 0.80, radius: 100, width: 10, color: pink, animate: true, glow: true)
-        barView.addBar(progress: 0.45, radius: 120, width: 15, color: blue, animate: true, glow: true)
-        barView.addBar(progress: 0.65, radius: 80, width: 10, color: green, animate: true, glow: true)
+        barView.addBar(progress: 0.80, radius: 100, width: 10, color: pink, animate: true, glowColor: pink.withAlphaComponent(0.5), glowRadius: 5)
+        barView.addBar(progress: 0.45, radius: 120, width: 15, color: blue, animate: true, glowColor: blue.withAlphaComponent(0.5), glowRadius: 5)
+        barView.addBar(progress: 0.65, radius: 80, width: 10, color: green, animate: true, glowColor: green.withAlphaComponent(0.5), glowRadius: 5)
     }
     
     override var representedObject: Any? {

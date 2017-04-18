@@ -38,23 +38,24 @@ public class OGCircularBarView: NSView, Sequence {
         layerUsesCoreImageFilters = true
     }
     
-    public func addBar(progress: CGFloat, radius: CGFloat, width: CGFloat, color: NSColor, animate: Bool, glow: Bool) {
+    public func addBar(progress: CGFloat, radius: CGFloat, width: CGFloat, color: NSColor, animate: Bool, glowColor: NSColor?, glowRadius: CGFloat) {
         let endAngle = 2*CGFloat.pi*progress
-        let glowBarLayer = glow ? CircularBarLayer(center: center, radius: radius, width: width, startAngle: 0, endAngle: endAngle, color: color.withAlphaComponent(0.6), glowLayer: nil) : nil
-        let barLayer = CircularBarLayer(center: center, radius: radius, width: width, startAngle: 0, endAngle: endAngle, color: color, glowLayer: glowBarLayer)
-        bars.append(barLayer)
-        if let glowLayer = glowBarLayer {
+        let barLayer = CircularBarLayer(center: center, radius: radius, width: width, startAngle: 0, endAngle: endAngle, color: color)
+        if let glowColor = glowColor {
+            let glowLayer = CircularBarLayer(center: center, radius: radius, width: width, startAngle: 0, endAngle: endAngle, color: glowColor)
             let groupLayer = CALayer()
             groupLayer.frame = barLayer.frame
             let filter = CIFilter(name: "CIGaussianBlur")!
-            filter.setValue(6, forKey: kCIInputRadiusKey)
+            filter.setValue(glowRadius, forKey: kCIInputRadiusKey)
             glowLayer.filters = [filter]
             groupLayer.addSublayer(glowLayer)
             groupLayer.addSublayer(barLayer)
+            barLayer.glowLayer = glowLayer
             layer!.addSublayer(groupLayer)
         } else {
             layer?.addSublayer(barLayer)
         }
+        bars.append(barLayer)
         barLayer.setProgress(progress, duration: 1.5)
     }
     
@@ -76,7 +77,8 @@ public class OGCircularBarView: NSView, Sequence {
 
 open class CircularBarLayer: CAShapeLayer, CALayerDelegate, CAAnimationDelegate {
     var completion: ((Void) -> Void)?
-    var glowBarLayer: CircularBarLayer?
+    var glowLayer: CircularBarLayer?
+    
     open var progress: CGFloat? {
         get {
             return strokeEnd
@@ -86,9 +88,8 @@ open class CircularBarLayer: CAShapeLayer, CALayerDelegate, CAAnimationDelegate 
         }
     }
     
-    public init(center: CGPoint, radius: CGFloat, width: CGFloat, startAngle: CGFloat, endAngle: CGFloat, color: NSColor, glowLayer: CircularBarLayer?) {
+    public init(center: CGPoint, radius: CGFloat, width: CGFloat, startAngle: CGFloat, endAngle: CGFloat, color: NSColor) {
         super.init()
-        glowBarLayer = glowLayer
         let bezier = NSBezierPath()
         bezier.appendArc(withCenter: center, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: true)
         bezier.transform(using: AffineTransform(rotationByDegrees: 90))
@@ -105,7 +106,7 @@ open class CircularBarLayer: CAShapeLayer, CALayerDelegate, CAAnimationDelegate 
     }
     
     public convenience init(center: CGPoint, radius: CGFloat, width: CGFloat, color: NSColor) {
-        self.init(center: center, radius: radius, width: width, startAngle: 0, endAngle: 2*CGFloat.pi, color: color, glowLayer: nil)
+        self.init(center: center, radius: radius, width: width, startAngle: 0, endAngle: 2*CGFloat.pi, color: color)
     }
     
     public required init?(coder aDecoder: NSCoder) {
@@ -117,7 +118,7 @@ open class CircularBarLayer: CAShapeLayer, CALayerDelegate, CAAnimationDelegate 
     }
     
     open func setProgress(_ progress: CGFloat, duration: CGFloat, completion: ((Void) -> Void)? = nil) {
-        if let glowLayer = glowBarLayer {
+        if let glowLayer = glowLayer {
             glowLayer.setProgress(progress, duration: duration)
         }
         let animation = CABasicAnimation(keyPath: "strokeEnd")
