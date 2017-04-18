@@ -108,6 +108,9 @@ open class CircularBarLayer: CAShapeLayer, CALayerDelegate, CAAnimationDelegate 
     }
     
     open func setProgress(_ progress: CGFloat, duration: CGFloat, completion: ((Void) -> Void)? = nil) {
+        guard self.progress != progress, progress > 0 else {
+            return
+        }
         let animation = CABasicAnimation(keyPath: "strokeEnd")
         animation.fromValue = strokeEnd
         animation.toValue = progress
