@@ -22,7 +22,7 @@ public class OGCircularBarView: NSView, Sequence {
         super.awakeFromNib()
         setup()
     }
-
+    
     override public init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
         setup()
@@ -35,28 +35,19 @@ public class OGCircularBarView: NSView, Sequence {
     
     func setup() {
         wantsLayer = true
-        layerUsesCoreImageFilters = true
     }
     
-    public func addBar(progress: CGFloat, radius: CGFloat, width: CGFloat, color: NSColor, animate: Bool, glowColor: NSColor?, glowRadius: CGFloat) {
+    public func addBar(progress: CGFloat, radius: CGFloat, width: CGFloat, color: NSColor, animate: Bool, duration: CGFloat, glowOpacity: Float, glowRadius: CGFloat) {
         let endAngle = 2*CGFloat.pi*progress
         let barLayer = CircularBarLayer(center: center, radius: radius, width: width, startAngle: 0, endAngle: endAngle, color: color)
-        if let glowColor = glowColor {
-            let glowLayer = CircularBarLayer(center: center, radius: radius, width: width, startAngle: 0, endAngle: endAngle, color: glowColor)
-            let groupLayer = CALayer()
-            groupLayer.frame = barLayer.frame
-            let filter = CIFilter(name: "CIGaussianBlur")!
-            filter.setValue(glowRadius, forKey: kCIInputRadiusKey)
-            glowLayer.filters = [filter]
-            groupLayer.addSublayer(glowLayer)
-            groupLayer.addSublayer(barLayer)
-            barLayer.glowLayer = glowLayer
-            layer!.addSublayer(groupLayer)
-        } else {
-            layer?.addSublayer(barLayer)
-        }
+        barLayer.shadowColor = color.cgColor
+        barLayer.shadowRadius = glowRadius
+        barLayer.shadowOpacity = glowOpacity
+        barLayer.shadowOffset = NSSize.zero
+        
+        layer?.addSublayer(barLayer)
         bars.append(barLayer)
-        barLayer.setProgress(progress, duration: 1.5)
+        barLayer.setProgress(progress, duration: duration)
     }
     
     public func addCircleBar(radius: CGFloat, width: CGFloat, color: NSColor) {
@@ -77,7 +68,6 @@ public class OGCircularBarView: NSView, Sequence {
 
 open class CircularBarLayer: CAShapeLayer, CALayerDelegate, CAAnimationDelegate {
     var completion: ((Void) -> Void)?
-    var glowLayer: CircularBarLayer?
     
     open var progress: CGFloat? {
         get {
@@ -118,9 +108,6 @@ open class CircularBarLayer: CAShapeLayer, CALayerDelegate, CAAnimationDelegate 
     }
     
     open func setProgress(_ progress: CGFloat, duration: CGFloat, completion: ((Void) -> Void)? = nil) {
-        if let glowLayer = glowLayer {
-            glowLayer.setProgress(progress, duration: duration)
-        }
         let animation = CABasicAnimation(keyPath: "strokeEnd")
         animation.fromValue = strokeEnd
         animation.toValue = progress

@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
 s.name              = 'OGCircularBar'
-s.version           = '1.0'
+s.version           = '1.1'
 s.summary           = 'Circular progress bar for macOS'
 s.homepage          = 'https://github.com/OskarGroth/OGCircularBar'
 s.license           = {

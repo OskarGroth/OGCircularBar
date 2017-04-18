@@ -10,27 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OGCircularBar/OGCircularBarView.swift"
-            timestampString = "514193270.468607"
+            timestampString = "514203286.75082"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
-            landmarkName = "addBar(progress:radius:width:color:animate:glowColor:glowRadius:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "OGCircularBar/OGCircularBarView.swift"
-            timestampString = "514193312.915579"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "121"
-            endingLineNumber = "121"
+            startingLineNumber = "110"
+            endingLineNumber = "110"
             landmarkName = "setProgress(_:duration:completion:)"
             landmarkType = "7">
             <Locations>
