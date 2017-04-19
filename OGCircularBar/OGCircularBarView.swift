@@ -82,7 +82,7 @@ open class CircularBarLayer: CAShapeLayer, CALayerDelegate, CAAnimationDelegate 
         let bezier = NSBezierPath()
         bezier.appendArc(withCenter: center, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: true)
         bezier.transform(using: AffineTransform(rotationByDegrees: 90))
-        bezier.transform(using: AffineTransform(translationByX: center.x*2, byY: 0))
+        bezier.transform(using: AffineTransform(translationByX: center.y+center.x, byY: center.y-center.x))
         bezier.close()
         delegate = self as CALayerDelegate
         path = bezier.cgPath
