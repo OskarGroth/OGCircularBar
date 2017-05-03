@@ -82,8 +82,8 @@
 		753A29351EA4B2BA00B8CC61 /* OGCircularBar-Demo */ = {
 			isa = PBXGroup;
 			children = (
-				753A29361EA4B2BA00B8CC61 /* AppDelegate.swift */,
 				753A29381EA4B2BA00B8CC61 /* ViewController.swift */,
+				753A29361EA4B2BA00B8CC61 /* AppDelegate.swift */,
 				753A293A1EA4B2BA00B8CC61 /* Assets.xcassets */,
 				753A293C1EA4B2BA00B8CC61 /* Main.storyboard */,
 				753A293F1EA4B2BA00B8CC61 /* Info.plist */,
@@ -428,6 +428,7 @@
 				753A292B1EA4B26A00B8CC61 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		753A29401EA4B2BA00B8CC61 /* Build configuration list for PBXNativeTarget "OGCircularBar-Demo" */ = {
 			isa = XCConfigurationList;
@@ -436,6 +437,7 @@
 				753A29421EA4B2BA00B8CC61 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

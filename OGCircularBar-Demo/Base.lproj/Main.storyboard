@@ -693,7 +693,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <subviews>
                                     <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uug-7K-YNm" customClass="OGCircularBarView" customModule="OGCircularBar_Demo" customModuleProvider="target">
-                                        <rect key="frame" x="100" y="100" width="300" height="300"/>
+                                        <rect key="frame" x="80" y="80" width="340" height="340"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     </customView>
                                     <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FUD-2m-Ri5">
