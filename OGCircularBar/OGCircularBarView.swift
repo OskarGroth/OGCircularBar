@@ -91,7 +91,7 @@ open class CircularBarLayer: CAShapeLayer, CALayerDelegate, CAAnimationDelegate 
         let bezier = NSBezierPath()
         bezier.appendArc(withCenter: NSZeroPoint, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: true)
         switch type {
-        case .topHalf:
+        case .bottomHalf:
             bezier.transform(using: AffineTransform(rotationByDegrees: 0))
             break
         case .full:
@@ -100,7 +100,7 @@ open class CircularBarLayer: CAShapeLayer, CALayerDelegate, CAAnimationDelegate 
         case .rightHalf:
             bezier.transform(using: AffineTransform(rotationByDegrees: 135))
             break
-        case .bottomHalf:
+        case .topHalf:
             bezier.transform(using: AffineTransform(rotationByDegrees: 180))
             break
         case .leftHalf:
