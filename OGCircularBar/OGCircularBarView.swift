@@ -8,14 +8,6 @@
 
 import Cocoa
 
-public enum OGCircularBarType {
-    case full
-    case topHalf
-    case rightHalf
-    case bottomHalf
-    case leftHalf
-}
-
 public class OGCircularBarView: NSView, Sequence {
     
     public var bars: [CircularBarLayer] = []
@@ -45,8 +37,8 @@ public class OGCircularBarView: NSView, Sequence {
         wantsLayer = true
     }
     
-    public func addBar(progress: CGFloat, radius: CGFloat, width: CGFloat, color: NSColor, animationDuration: CGFloat, glowOpacity: Float, glowRadius: CGFloat, type: OGCircularBarType, clockwise: Bool?, offset: CGPoint?) {
-        let barLayer = CircularBarLayer(center: center, radius: radius, width: width, startAngle: 0, endAngle: 2*CGFloat.pi, color: color, type: type, clockwise: clockwise, offset: offset)
+    public func addBar(startAngle: CGFloat, endAngle: CGFloat, progress: CGFloat, radius: CGFloat, width: CGFloat, color: NSColor, animationDuration: CGFloat, glowOpacity: Float, glowRadius: CGFloat) {
+        let barLayer = CircularBarLayer(center: center, radius: radius, width: width, startAngle: startAngle, endAngle: endAngle, color: color)
         barLayer.shadowColor = color.cgColor
         barLayer.shadowRadius = glowRadius
         barLayer.shadowOpacity = glowOpacity
@@ -59,6 +51,12 @@ public class OGCircularBarView: NSView, Sequence {
         } else {
             barLayer.progress = progress
         }
+    }
+    
+    public func addBarBackground(startAngle: CGFloat, endAngle: CGFloat, radius: CGFloat, width: CGFloat, color: NSColor) {
+        let barLayer = CircularBarLayer(center: center, radius: radius, width: width, startAngle: startAngle, endAngle: endAngle, color: color)
+        barLayer.progress = 1
+        layer?.addSublayer(barLayer)
     }
 
     
@@ -75,43 +73,21 @@ public class OGCircularBarView: NSView, Sequence {
 open class CircularBarLayer: CAShapeLayer, CALayerDelegate, CAAnimationDelegate {
     
     var completion: ((Void) -> Void)?
-    var type: OGCircularBarType = .full
+
     open var progress: CGFloat? {
         get {
             return strokeEnd
         }
         set {
-            strokeEnd = (newValue ?? 0) / (type == .full ? 1 : 2)
+            strokeEnd = (newValue ?? 0)
         }
     }
     
-    public init(center: CGPoint, radius: CGFloat, width: CGFloat, startAngle: CGFloat, endAngle: CGFloat, color: NSColor, type: OGCircularBarType, clockwise: Bool?, offset: CGPoint?) {
-        self.type = type
+    public init(center: CGPoint, radius: CGFloat, width: CGFloat, startAngle: CGFloat, endAngle: CGFloat, color: NSColor) {
         super.init()
         let bezier = NSBezierPath()
-        bezier.appendArc(withCenter: NSZeroPoint, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: true)
-        switch type {
-        case .bottomHalf:
-            bezier.transform(using: AffineTransform(rotationByDegrees: 0))
-            break
-        case .full:
-            bezier.transform(using: AffineTransform(rotationByDegrees: 90))
-            break
-        case .rightHalf:
-            bezier.transform(using: AffineTransform(rotationByDegrees: 135))
-            break
-        case .topHalf:
-            bezier.transform(using: AffineTransform(rotationByDegrees: 180))
-            break
-        case .leftHalf:
-            bezier.transform(using: AffineTransform(rotationByDegrees: 215))
-            break
-        }
-        if let offset = offset {
-            bezier.relativeMove(to: offset)
-        }
+        bezier.appendArc(withCenter: NSZeroPoint, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: startAngle > endAngle)
         bezier.transform(using: AffineTransform(translationByX: center.x, byY: center.y))
-        bezier.close()
         delegate = self as CALayerDelegate
         path = bezier.cgPath
         fillColor = NSColor.clear.cgColor
@@ -132,7 +108,7 @@ open class CircularBarLayer: CAShapeLayer, CALayerDelegate, CAAnimationDelegate 
     
     open func animateProgress(_ progress: CGFloat, duration: CGFloat, completion: ((Void) -> Void)? = nil) {
         removeAllAnimations()
-        let progress = progress / (type == .full ? 1 : 2)
+        let progress = progress
         let animation = CABasicAnimation(keyPath: "strokeEnd")
         animation.fromValue = strokeEnd
         animation.toValue = progress
