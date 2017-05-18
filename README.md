@@ -24,7 +24,10 @@ You can add static backgrounds with the following method:
 
 `barView.addBarBackground(startAngle: 90, endAngle: -270, radius: 80, width: 10, color: NSColor.purple.withAlphaComponent(0.1))`
 
-        
+Animations are also supported:
+
+`barView.bars[1].animateProgress(val, duration: 1.5)`
+        
 
 ## License
 The MIT License (MIT)
