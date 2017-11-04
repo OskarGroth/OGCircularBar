@@ -72,7 +72,7 @@ public class OGCircularBarView: NSView, Sequence {
 
 open class CircularBarLayer: CAShapeLayer, CALayerDelegate, CAAnimationDelegate {
     
-    var completion: ((Void) -> Void)?
+    var completion: (() -> Void)?
 
     open var progress: CGFloat? {
         get {
@@ -106,7 +106,7 @@ open class CircularBarLayer: CAShapeLayer, CALayerDelegate, CAAnimationDelegate 
         super.init(layer: layer)
     }
     
-    open func animateProgress(_ progress: CGFloat, duration: CGFloat, completion: ((Void) -> Void)? = nil) {
+    open func animateProgress(_ progress: CGFloat, duration: CGFloat, completion: (() -> Void)? = nil) {
         removeAllAnimations()
         let progress = progress
         let animation = CABasicAnimation(keyPath: "strokeEnd")
