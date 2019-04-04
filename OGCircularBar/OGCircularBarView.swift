@@ -93,7 +93,7 @@ open class CircularBarLayer: CAShapeLayer, CALayerDelegate, CAAnimationDelegate 
         fillColor = NSColor.clear.cgColor
         strokeColor = color.cgColor
         lineWidth = width
-        lineCap = kCALineCapRound
+        lineCap = CAShapeLayerLineCap.round
         strokeStart = 0
         strokeEnd = 0
     }
@@ -114,7 +114,7 @@ open class CircularBarLayer: CAShapeLayer, CALayerDelegate, CAAnimationDelegate 
         animation.toValue = progress
         animation.duration = CFTimeInterval(duration)
         animation.delegate = self as CAAnimationDelegate
-        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
+        animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeOut)
         strokeEnd = progress
         add(animation, forKey: "strokeEnd")
     }
